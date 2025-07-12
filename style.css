@@ -1,0 +1,27 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Cinza claro de fundo */
+}
+/* Cores institucionais */
+.bg-primary-blue { background-color: #0056b3; } /* Azul escuro */
+.text-primary-blue { color: #0056b3; }
+.bg-secondary-gray { background-color: #e2e8f0; } /* Cinza claro */
+.text-secondary-gray { color: #e2e8f0; }
+.bg-accent-white { background-color: #ffffff; } /* Branco */
+.text-accent-white { color: #ffffff; }
+
+/* Estilo para a barra de rolagem */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
