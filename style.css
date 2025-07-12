@@ -3,8 +3,8 @@ body {
     background-color: #f0f2f5; /* Cinza claro de fundo */
 }
 /* Cores institucionais */
-.bg-primary-blue { background-color: #0056b3; } /* Azul escuro */
-.text-primary-blue { color: #0056b3; }
+.bg-primary-blue { background-color: #800020; } /* Vinho principal (Bordô) */
+.text-primary-blue { color: #800020; }
 .bg-secondary-gray { background-color: #e2e8f0; } /* Cinza claro */
 .text-secondary-gray { color: #e2e8f0; }
 .bg-accent-white { background-color: #ffffff; } /* Branco */
@@ -24,4 +24,109 @@ body {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Estilo específico para o link da Área Administrativa para combinar com o tema vinho */
+#admin-login-link {
+    background-color: #6A001A !important; /* Um vinho mais escuro */
+}
+
+#admin-login-link:hover {
+    background-color: #4D0013 !important; /* Um vinho ainda mais escuro no hover */
+}
+
+/* Ajuste para botões de sugestão rápida para combinar com o tema */
+.suggestion-btn {
+    background-color: #F8E6E9 !important; /* Um tom de vinho muito claro para contraste */
+    color: #800020 !important; /* Cor do texto principal do tema (vinho) */
+}
+
+.suggestion-btn:hover {
+    background-color: #EEDEE1 !important; /* Um tom ligeiramente mais escuro no hover */
+}
+
+/* Ajuste para o botão de envio do chat */
+#send-btn {
+    background-color: #800020 !important; /* Vinho principal */
+}
+
+#send-btn:hover {
+    background-color: #6A001A !important; /* Um vinho mais escuro no hover */
+}
+
+/* Ajuste para o botão de login administrativo */
+#admin-login-form button[type="submit"] {
+    background-color: #800020 !important; /* Vinho principal */
+}
+
+#admin-login-form button[type="submit"]:hover {
+    background-color: #6A001A !important; /* Um vinho mais escuro no hover */
+}
+
+/* Ajuste para o botão de atualização de conteúdo no painel admin (mantido verde para ação positiva) */
+#update-content-btn {
+    background-color: #228B22 !important; /* ForestGreen */
+}
+
+#update-content-btn:hover {
+    background-color: #006400 !important; /* DarkGreen */
+}
+
+/* Ajuste para o botão de gerenciamento de permissões (que usava bg-blue-500) */
+.bg-blue-500 { /* Esta classe é usada no HTML para o botão de gerenciar permissões */
+    background-color: #800020 !important; /* Vinho principal */
+}
+
+.hover\:bg-blue-600:hover { /* Sobrescreve o hover do Tailwind para o botão de permissões */
+    background-color: #6A001A !important; /* Um vinho mais escuro no hover */
+}
+
+/* Ajuste para o botão de sair do painel admin */
+#close-admin-dashboard {
+    background-color: #DC143C !important; /* Crimson - um vermelho para sair/perigo (mantido) */
+}
+
+#close-admin-dashboard:hover {
+    background-color: #B22222 !important; /* Firebrick - um vermelho mais escuro no hover (mantido) */
+}
+
+/* Ajuste para a cor de fundo das mensagens do usuário no chat (que usava bg-blue-200) */
+.bg-blue-200 {
+    background-color: #F8E6E9 !important; /* Um tom de vinho muito claro */
+    color: #333333 !important; /* Cor do texto mais escuro para contraste */
+}
+
+/* Ajuste para a cor de fundo dos cards de atualizações e notícias (que usava bg-blue-50) */
+.bg-blue-50 {
+    background-color: #FFF0F5 !important; /* Um tom de vinho muito claro */
+}
+
+/* Ajuste para a cor do texto dos links e ícones que usavam text-blue-600 ou text-primary-blue */
+.text-blue-600, .text-primary-blue {
+    color: #800020 !important; /* Vinho principal */
+}
+
+/* Ajuste para a cor de fundo do gráfico no painel admin (que usava bg-gray-200) */
+.h-40.bg-gray-200 {
+    background-color: #F8E6E9 !important; /* Um tom de vinho muito claro */
+}
+
+/* Ajuste para as barras do gráfico */
+.h-40.bg-gray-200 div {
+    background-color: #800020 !important; /* Vinho principal */
+}
+
+/* Ajuste para o fundo da seção de estatísticas e permissões (que usava bg-secondary-gray) */
+.bg-secondary-gray {
+    background-color: #F8F8FF !important; /* GhostWhite - um branco quase imperceptível (mantido) */
+}
+
+/* Ajuste para o texto dentro das estatísticas */
+.text-gray-600, .text-gray-800 {
+    color: #333333 !important; /* Cor de texto padrão mais escura (mantido) */
+}
+
+/* Ajuste para o texto do modal */
+#modal-title, #modal-message {
+    color: #333333 !important; /* Cor de texto padrão mais escura (mantido) */
 }
