@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NormaBot</title>
+    <!-- Carrega o Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Menu Lateral (oculto por padrão em mobile) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-primary-blue text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 shadow-lg md:relative md:flex-shrink-0">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold">Menu</h2>
+            <button id="close-sidebar" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li class="mb-4">
+                    <a href="#" class="sidebar-category flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200" data-category="RH">
+                        <i class="fas fa-users mr-3"></i> RH
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="sidebar-category flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200" data-category="Viagens">
+                        <i class="fas fa-plane-departure mr-3"></i> Viagens
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="sidebar-category flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200" data-category="Benefícios">
+                        <i class="fas fa-hand-holding-usd mr-3"></i> Benefícios
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="sidebar-category flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200" data-category="Conduta">
+                        <i class="fas fa-gavel mr-3"></i> Conduta
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="sidebar-category flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200" data-category="Todas as Categorias">
+                        <i class="fas fa-list mr-3"></i> Ver todas as categorias
+                    </a>
+                </li>
+                <li class="mt-8">
+                    <a href="#" id="admin-login-link" class="flex items-center p-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+                        <i class="fas fa-user-shield mr-3"></i> Área Administrativa
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Conteúdo Principal da Aplicação -->
+    <div id="main-app" class="flex-1 flex flex-col bg-secondary-gray transition-all duration-300 ease-in-out overflow-hidden">
+        <!-- Cabeçalho -->
+        <header class="bg-accent-white p-4 flex items-center justify-between shadow-md z-10">
+            <button id="open-sidebar" class="md:hidden text-primary-blue focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <div class="flex items-center">
+                <!-- Logo da empresa (placeholder) -->
+                <div class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">L</div>
+                <h1 class="text-2xl font-bold text-primary-blue">NormaBot</h1>
+            </div>
+            <div></div> <!-- Espaçador para centralizar o título -->
+        </header>
+
+        <!-- Área de Conteúdo Principal -->
+        <div id="app-content" class="flex-1 p-4 overflow-y-auto relative">
+
+            <!-- Tela de Boas-Vindas e Chat -->
+            <div id="welcome-chat-screen" class="max-w-3xl mx-auto bg-accent-white rounded-lg shadow-xl p-6 flex flex-col h-full">
+                <div class="flex-1 overflow-y-auto mb-4 p-2 custom-scrollbar">
+                    <!-- Mensagem de Boas-Vindas do NormaBot -->
+                    <div class="flex justify-start mb-4">
+                        <div class="bg-primary-blue text-white p-4 rounded-lg rounded-bl-none max-w-[80%]">
+                            <p>Olá! Eu sou o NormaBot. Posso te ajudar com as normas e políticas da empresa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Botões de Sugestões Rápidas -->
+                    <div id="quick-suggestions" class="flex flex-wrap gap-3 mb-6">
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Reembolso">Reembolso</button>
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Viagens">Viagens</button>
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Férias">Férias</button>
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Dress Code">Dress Code</button>
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Banco de horas">Banco de horas</button>
+                        <button class="suggestion-btn bg-blue-100 text-primary-blue px-4 py-2 rounded-full hover:bg-blue-200 transition-colors duration-200 shadow-sm" data-query="Comunicação oficial">Comunicação oficial</button>
+                    </div>
+
+                    <!-- Área de Mensagens do Chat -->
+                    <div id="chat-messages" class="flex flex-col space-y-4">
+                        <!-- Mensagens do chat serão adicionadas aqui dinamicamente -->
+                    </div>
+                </div>
+
+                <!-- Campo de Digitação e Busca Inteligente -->
+                <div class="relative mt-auto">
+                    <input type="text" id="user-input" placeholder="Digite sua dúvida, por exemplo: 'Como funciona o reembolso?'" class="w-full p-3 pr-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-blue shadow-md">
+                    <button id="send-btn" class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary-blue text-white p-2 rounded-full hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center w-8 h-8">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <!-- Sugestões de Autocompletar -->
+                    <div id="autocomplete-suggestions" class="absolute bottom-full left-0 w-full bg-white border border-gray-200 rounded-lg shadow-lg mb-2 hidden">
+                        <!-- Sugestões serão adicionadas aqui dinamicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área de Atualizações e Novidades -->
+            <div id="updates-news-section" class="max-w-3xl mx-auto bg-accent-white rounded-lg shadow-xl p-6 mt-6">
+                <h2 class="text-xl font-bold text-primary-blue mb-4">Atualizações e Novidades</h2>
+                <div id="updates-news-content" class="space-y-4">
+                    <!-- Conteúdo de atualizações será carregado aqui -->
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-bullhorn text-primary-blue text-2xl mr-4"></i>
+                        <div>
+                            <p class="font-semibold text-primary-blue">Nova política de home office disponível!</p>
+                            <a href="#" class="text-blue-600 hover:underline text-sm">Saiba mais <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-calendar-alt text-gray-600 text-2xl mr-4"></i>
+                        <div>
+                            <p class="font-semibold text-gray-800">Alteração nas regras de férias.</p>
+                            <a href="#" class="text-blue-600 hover:underline text-sm">Ver detalhes <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de Mensagem (para substituir alert/confirm) -->
+            <div id="message-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+                    <h3 id="modal-title" class="text-lg font-semibold mb-4 text-primary-blue"></h3>
+                    <p id="modal-message" class="mb-6 text-gray-700"></p>
+                    <button id="modal-close-btn" class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-200">Fechar</button>
+                </div>
+            </div>
+
+            <!-- Tela de Login Administrativo -->
+            <div id="admin-login-screen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-accent-white p-8 rounded-lg shadow-xl max-w-md w-full">
+                    <h2 class="text-2xl font-bold text-primary-blue mb-6 text-center">Login da Área Administrativa</h2>
+                    <form id="admin-login-form">
+                        <div class="mb-4">
+                            <label for="admin-username" class="block text-gray-700 text-sm font-bold mb-2">Usuário:</label>
+                            <input type="text" id="admin-username" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-primary-blue" placeholder="Usuário" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="admin-password" class="block text-gray-700 text-sm font-bold mb-2">Senha:</label>
+                            <input type="password" id="admin-password" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-primary-blue" placeholder="Senha" required>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button type="submit" class="bg-primary-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200 w-full">
+                                Entrar
+                            </button>
+                        </div>
+                    </form>
+                    <button id="close-admin-login" class="mt-4 text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200 w-full">Voltar</button>
+                </div>
+            </div>
+
+            <!-- Tela do Painel Administrativo -->
+            <div id="admin-dashboard-screen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-accent-white p-8 rounded-lg shadow-xl max-w-2xl w-full h-[90vh] flex flex-col">
+                    <h2 class="text-2xl font-bold text-primary-blue mb-6 text-center">Painel Administrativo</h2>
+
+                    <div class="flex-1 overflow-y-auto custom-scrollbar mb-6">
+                        <!-- Botão "Atualizar Conteúdo/Documento" -->
+                        <button id="update-content-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200 mb-6 w-full">
+                            <i class="fas fa-upload mr-2"></i> Atualizar Conteúdo/Documento
+                        </button>
+
+                        <!-- Seção de "Estatísticas de Uso" (Placeholder) -->
+                        <div class="bg-secondary-gray p-6 rounded-lg mb-6 shadow-md">
+                            <h3 class="text-xl font-semibold text-primary-blue mb-4">Estatísticas de Uso</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-lg shadow-sm">
+                                    <p class="text-gray-600">Perguntas mais feitas:</p>
+                                    <ul class="list-disc list-inside text-gray-800 mt-2">
+                                        <li>Reembolso de despesas (150x)</li>
+                                        <li>Política de home office (120x)</li>
+                                        <li>Regras de férias (90x)</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg shadow-sm">
+                                    <p class="text-gray-600">Dúvidas recorrentes:</p>
+                                    <ul class="list-disc list-inside text-gray-800 mt-2">
+                                        <li>Como solicitar adiantamento de viagem?</li>
+                                        <li>Prazos para entrega de atestados.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Gráfico de exemplo (pode ser substituído por uma biblioteca de gráficos real) -->
+                            <div class="mt-4 bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="text-lg font-medium mb-2">Gráfico de Interações Diárias</h4>
+                                <div class="h-40 bg-gray-200 rounded-md flex items-end overflow-hidden">
+                                    <div class="bg-primary-blue w-1/5 h-3/4 rounded-t-sm mx-1"></div>
+                                    <div class="bg-primary-blue w-1/5 h-1/2 rounded-t-sm mx-1"></div>
+                                    <div class="bg-primary-blue w-1/5 h-full rounded-t-sm mx-1"></div>
+                                    <div class="bg-primary-blue w-1/5 h-2/3 rounded-t-sm mx-1"></div>
+                                    <div class="bg-primary-blue w-1/5 h-1/4 rounded-t-sm mx-1"></div>
+                                </div>
+                                <p class="text-center text-sm text-gray-500 mt-2">Exemplo de gráfico de barras</p>
+                            </div>
+                        </div>
+
+                        <!-- Opção "Gerenciar Permissões" (Placeholder) -->
+                        <div class="bg-secondary-gray p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold text-primary-blue mb-4">Gerenciar Permissões</h3>
+                            <p class="text-gray-700">Funcionalidade para gerenciar o acesso e as permissões dos administradores e usuários.</p>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full mt-4 transition-colors duration-200">
+                                <i class="fas fa-cogs mr-2"></i> Abrir Gerenciador de Permissões
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="close-admin-dashboard" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200 mt-auto">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Sair do Painel
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
